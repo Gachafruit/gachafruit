@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gachafruit Studio - Premium Yo-Yo Grease & 3D Printed Accessories</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f5f0e8;
+            color: #2d2d2d;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #f5f0e8 0%, #e8dcc8 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 4px solid #d17548;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(209, 117, 72, 0.05) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-logo {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .tagline {
+            font-size: 1.4em;
+            color: #4a5d42;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #4a5d42;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #f5f0e8;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #d17548;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background-color: #faf7f2;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            color: #d17548;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #d17548, #4a5d42);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2em;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .fruit-icon {
+            width: 80px;
+            height: 80px;
+            margin: 30px auto;
+            display: block;
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(209, 117, 72, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card h3 {
+            color: #4a5d42;
+            font-size: 2em;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .product-card p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        /* Owner Section */
+        .owner-section {
+            background: linear-gradient(135deg, #4a5d42 0%, #3a4d32 100%);
+            color: white;
+        }
+
+        .owner-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .owner-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 8px solid #d17548;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .owner-photo:hover {
+            transform: rotate(5deg) scale(1.05);
+            border-color: #f5f0e8;
+        }
+
+        .owner-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .owner-text h2 {
+            color: #f5f0e8;
+        }
+
+        .owner-text p {
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        /* Shop CTA */
+        .shop-cta {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #d17548 0%, #b85d38 100%);
+            color: white;
+        }
+
+        .shop-cta h2 {
+            color: white;
+            font-size: 3em;
+            margin-bottom: 30px;
+        }
+
+        .shop-button {
+            display: inline-block;
+            background: white;
+            color: #d17548;
+            padding: 20px 50px;
+            font-size: 1.5em;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .shop-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: #f5f0e8;
+        }
+
+        /* Social Links */
+        .social-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #4a5d42;
+        }
+
+        .social-section h2 {
+            color: #f5f0e8;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #4a5d42;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .social-link:hover {
+            background: #d17548;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2d2d2d;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2em;
+            }
+
+            .main-logo {
+                max-width: 280px;
+            }
+
+            .tagline {
+                font-size: 1.1em;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 0.9em;
+            }
+
+            .owner-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .owner-photo {
+                width: 200px;
+                height: 200px;
+            }
+
+            .shop-cta h2 {
+                font-size: 2em;
+            }
+
+            .shop-button {
+                padding: 15px 35px;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="assets/img/Gacha-Photoroom.png" alt="Gachafruit Logo" class="main-logo">
+                <p class="tagline">Crafting Joy, One Spin at a Time</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#owner">Meet the Owner</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#connect">Connect</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2>Our Story</h2>
+            <svg class="fruit-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="80" fill="#e89a7e" stroke="#2d2d2d" stroke-width="4"/>
+                <circle cx="100" cy="100" r="40" fill="#f5f0e8" stroke="#2d2d2d" stroke-width="3"/>
+                <path d="M 100 20 Q 80 40, 100 60 Q 120 40, 100 20" fill="#c8db9e" stroke="#2d2d2d" stroke-width="3"/>
+                <line x1="40" y1="100" x2="160" y2="100" stroke="#2d2d2d" stroke-width="3"/>
+            </svg>
+            <div class="about-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2>Our Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3>🌟 Nectar</h3>
+                    <p><strong>Premium Yo-Yo Grease</strong></p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our flagship product that keeps your yo-yo spinning smooth and silent. Expertly formulated for peak performance.</p>
+                </div>
+                <div class="product-card">
+                    <h3>🎨 Custom 3D Prints</h3>
+                    <p><strong>Unique Designs & Accessories</strong></p>
+                    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. From decorative planters to dragon pen holders, each piece is designed and printed in-house with meticulous attention to detail.</p>
+                </div>
+                <div class="product-card">
+                    <h3>🪀 Yo-Yo Accessories</h3>
+                    <p><strong>Premium Performance Parts</strong></p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation. Custom-designed yo-yos and accessories that blend artistry with functionality. Built for enthusiasts who demand the best.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="owner" class="owner-section">
+        <div class="container">
+            <h2>Meet the Owner</h2>
+            <div class="owner-content">
+                <img src="https://raw.githubusercontent.com/user/repo/main/owner.jpg" alt="Owner" class="owner-photo" onerror="this.style.display='none'">
+                <div class="owner-text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Every design you see here was crafted with passion and precision!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" class="shop-cta">
+        <div class="container">
+            <h2>Ready to Explore?</h2>
+            <p style="font-size: 1.3em; margin-bottom: 40px;">Visit our shop to see our full collection!</p>
+            <a href="https://www.etsy.com/shop/Gachafruit" target="_blank" class="shop-button">Shop on Etsy</a>
+        </div>
+    </section>
+
+    <section id="connect" class="social-section">
+        <div class="container">
+            <h2>Connect With Us</h2>
+            <div class="social-links">
+                <a href="https://www.instagram.com/gachafruitstudio/" target="_blank" class="social-link">📸 Instagram</a>
+                <a href="#" target="_blank" class="social-link">👍 Facebook</a>
+                <a href="#" target="_blank" class="social-link">🎥 YouTube</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Gachafruit Studio. All rights reserved.</p>
+            <p>Crafted with ❤️ and a whole lot of spin</p>
+        </div>
+    </footer>
+</body>
+</html>
